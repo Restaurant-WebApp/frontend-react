@@ -16,7 +16,7 @@ import Order from "./views/Order";
 import Reservation from "./views/Reservation";
 import Review from "./views/Review";
 import Cart from "./views/Cart";
-import Admin from "./views/Admin";
+import Admin from "./views/Adminis";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // styles
@@ -63,7 +63,7 @@ const App = () => {
             <Route path="/reservation" component={Reservation}/>
             <Route path="/review" component={Review}/>
             <Route path="/cart" render={() => <Cart cartItems={cartItems} />} />
-            <Route path="/Admin" component={Admin}/>
+            <Route path="/Adminis" component={Admin}/>
           </Switch>
         </Container>
         <Footer />

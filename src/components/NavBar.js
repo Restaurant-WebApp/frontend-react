@@ -19,9 +19,6 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-
-
-
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const {
@@ -38,6 +35,8 @@ const NavBar = () => {
           returnTo: window.location.origin,
         }
     });    
+
+    const specificUserId = "google-oauth2|104159445569371395100"; //Admin userId
     
   return (
     <div className="nav-container">
@@ -57,18 +56,18 @@ const NavBar = () => {
                   Home
                 </NavLink>
               </NavItem>
-              {isAuthenticated && (
-                <NavItem>
-                  <NavLink
-                    tag={RouterNavLink}
-                    to="/external-api"
-                    exact
-                    activeClassName="router-link-exact-active"
-                  >
-                    Admin
-                  </NavLink>
-                </NavItem>
-              )}
+              {isAuthenticated && user && user.sub === specificUserId && (
+              <NavItem>
+                <NavLink
+                  tag={RouterNavLink}
+                  to="/Adminis"
+                  exact
+                  activeClassName="router-link-exact-active"
+                >
+                  Admin
+                </NavLink>
+              </NavItem>
+            )}
             </Nav>
             <Nav className="mr-auto" navbar>
               <NavLink 
