@@ -14,13 +14,48 @@ export const fetchData = async () => {
   }
 };
 
+export const AddItem = async (item) => {
+  try {
+    const response = await axios.post("http://35.233.78.152/gateway/product", item,{
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    if (response.data.isSuccess) {
+      return response.data.result;
+    } else {
+      throw new Error(response.data.displayMessage);
+    }
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to add the item ");
+  }
+};
+
+export const DeleteItem = async (itemId) => {
+  console.log("before calling DeleteItem function");
+  try {
+    const response = await axios.delete(`http://35.233.78.152/gateway/product?id=${itemId}`);
+    console.log(response.data);
+    if (response.data.isSuccess) {
+      return response.data.result;
+    } else {
+      throw new Error(response.data.displayMessage);
+    }
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to delete the item ");
+  }
+};
+
+
 export const CheckoutCart = async (CheckoutHeader) => {
   try {
     console.log(CheckoutHeader);
     const response = await axios.post("http://35.233.78.152/gateway/checkout", CheckoutHeader, {
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:3000' // Add this header
+        //'Access-Control-Allow-Origin': 'http://localhost:3000' 
       }
     });
 
