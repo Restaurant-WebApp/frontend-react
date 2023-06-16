@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    gap: 100px;
+  }
+  
+.cartItems {
+    flex: 1;
+    background-color: #64adec;
+    padding: 1rem 1rem;
+    border-radius: 4px;
+  }
+
+.totalPrice{
+  font-size: 40px;
+  position: relative;
+  float: right;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #64adec;
+  padding: 4rem 1rem;
+  border-radius: 4px;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formLabel {
+  font-weight: bold;
+}
+
+.formInput {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.formButton {
+  padding: 1rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  float: right;
+}
+
+.formButton:hover {
+  background-color: #0056b3;
+}

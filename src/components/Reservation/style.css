@@ -1,0 +1,28 @@
+/* Assuming the seating container has the class "seating-container" */
+.seating-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+    gap: 20px;
+  }
+  
+  .table {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .table p {
+    margin: 0;
+  }
+  
+  .table.occupied {
+    background-color: #ffcccc;
+  }
+  
+  .table:hover {
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  
