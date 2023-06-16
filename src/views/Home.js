@@ -1,14 +1,17 @@
 import React, { Fragment } from "react";
 
 import Hero from "../components/Hero";
-import Content from "../components/Content";
+import backgroundImage from "../assets/background-image.jpg";
+import styles from "./Home.module.css";
 
 const Home = () => (
   <Fragment>
+    <div className={styles.background}>
+      <img src={backgroundImage} alt="Background" className={styles.backgroundImage} />
+    </div>
     <Hero />
-    <hr />
-    <Content />
   </Fragment>
 );
 
 export default Home;
+
