@@ -4,6 +4,7 @@ import { CheckoutCart } from "../API/APICall";
 import styleClass from "./Cart.module.css";
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from 'react-router-dom';
 
 
 const Cart = ({ cartItems }) => {
@@ -12,6 +13,8 @@ const Cart = ({ cartItems }) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [dateTime, setDateTime] = useState("");
+  const history = useHistory();
+
 
   useEffect(() => {
     setItems(cartItems.map((item) => ({ ...item, quantity: 1 })));
@@ -90,6 +93,9 @@ const Cart = ({ cartItems }) => {
       if (response && response.isSuccess) {
         console.log('Success');
         toast.success('Your order has been successfully placed. Thank you!!');
+         
+        // Route to "/success" page
+        history.push('/success');
       } else if (response && response.displayMessage) {
         console.log('Failure');
         toast.error(response.displayMessage);

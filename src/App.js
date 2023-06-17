@@ -18,6 +18,7 @@ import Cart from "./views/Cart";
 import Admin from "./views/Adminis";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Success from "./views/Success";
 // styles
 import "./App.css";
 
@@ -62,6 +63,7 @@ const App = () => {
             <Route path="/review" component={Review}/>
             <Route path="/cart" render={() => <Cart cartItems={cartItems} />} />
             <Route path="/Adminis" component={Admin}/>
+            <Route path="/success" component={Success}/>
           </Switch>
         </Container>
         <Footer />

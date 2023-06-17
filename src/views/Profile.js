@@ -15,7 +15,7 @@ export const ProfileComponent = () => {
     await deleteUser(user.email);   
 
     await logout({ returnTo: window.location.origin });
-    history.push("/");    
+    history.push("/success");    
   };
   
   return (
