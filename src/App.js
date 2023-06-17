@@ -12,7 +12,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import history from "./utils/history";
 
 import Menu from "./views/Menu";
-import Order from "./views/Order";
 import Reservation from "./views/Reservation";
 import Review from "./views/Review";
 import Cart from "./views/Cart";
@@ -59,7 +58,6 @@ const App = () => {
             <Route path="/profile" component={Profile} />
             <Route path="/external-api" component={ExternalApi} />
             <Route path="/menu" render={() => <Menu addToCart={addToCart} />} />            
-            <Route path="/order" component={Order}/>
             <Route path="/reservation" component={Reservation}/>
             <Route path="/review" component={Review}/>
             <Route path="/cart" render={() => <Cart cartItems={cartItems} />} />

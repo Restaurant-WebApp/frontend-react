@@ -1,4 +1,5 @@
 import axios from "axios";
+import authConfig from '../auth_config.json';
 
 export const fetchData = async () => {
   try {
@@ -62,5 +63,43 @@ export const CheckoutCart = async (CheckoutHeader) => {
     return response.data;
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const deleteUser = async (email) => {
+  const { domain, management_token } = authConfig;
+
+  try {
+    const userId = await getUserIdFromDetails(email)
+    console.log("Inside delete function: ", userId)
+    await axios.delete(`https://${domain}/api/v2/users/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${management_token}`
+      }
+    });
+    console.log('User deleted successfully.');
+  } catch (error) {
+    console.error('Failed to delete user:', error.response.data);
+  }
+};
+
+export const getUserIdFromDetails = async (email) => {
+  const { domain, management_token } = authConfig;
+  const options = {
+    method: 'GET',
+    url: `https://${domain}/api/v2/users`,
+    params: { q: `email:"${email}"`, search_engine: 'v3' },
+    headers: { authorization: `Bearer ${management_token}` }
+  };
+
+  try {
+    const response = await axios.request(options);
+    const userId = response.data[0].user_id; 
+    console.log("response :" , response);
+    console.log(userId);
+    return userId;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to retrieve user details');
   }
 };

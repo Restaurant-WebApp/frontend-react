@@ -89,14 +89,7 @@ const NavBar = () => {
                   to="/review"
                   exact
                   activeClassName="router-link-exact-active"> Reviews </NavLink>   
-            </Nav>
-            <Nav className="mr-auto" navbar>
-              <NavLink
-                tag={RouterNavLink}
-                to="/order"
-                exact
-                activeClassName="router-link-exact-active"> Orders </NavLink>   
-            </Nav>            
+            </Nav>        
             <Nav className="d-none d-md-block" navbar>
               {!isAuthenticated && (
                 <NavItem>
