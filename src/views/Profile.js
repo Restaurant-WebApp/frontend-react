@@ -7,13 +7,16 @@ import { deleteUser } from "../API/APICall";
 import styles from "./Home.module.css";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useHistory } from 'react-router-dom';
 
 export const ProfileComponent = () => {  
+  const history = useHistory();
+  
   const { user, logout } = useAuth0();
   const handleDeleteUser = async () => {
     await deleteUser(user.email);   
     toast.success('Your order has been successfully placed. Thank you!!');
-    await logout({ returnTo: 'https://frontend-react-jade.vercel.app/'  });  
+    history.push('https://frontend-react-jade.vercel.app/');
   };
   
   return (
