@@ -1,21 +1,19 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import { useHistory } from "react-router-dom";
 import Highlight from "../components/Highlight";
 import Loading from "../components/Loading";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { deleteUser } from "../API/APICall";
 import styles from "./Home.module.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export const ProfileComponent = () => {
-  const history = useHistory();
-  
+export const ProfileComponent = () => {  
   const { user, logout } = useAuth0();
   const handleDeleteUser = async () => {
     await deleteUser(user.email);   
-
-    await logout({ returnTo: window.location.origin });
-    history.push("/success");    
+    toast.success('Your order has been successfully placed. Thank you!!');
+    await logout({ returnTo: 'https://frontend-react-jade.vercel.app/'  });  
   };
   
   return (
