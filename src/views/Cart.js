@@ -52,13 +52,10 @@ const Cart = ({ cartItems }) => {
 
   const handleCheckout = async() => {
     const cartHeader = {
-      cartHeaderId: 0,
       userId: null,
     };
   
     const cartDetails = items.map((item) => ({
-      cartDetailsId: 0,
-      cartHeaderId: 0,
       cartHeader: cartHeader,
       productId: item.productId,
       product: {
@@ -73,7 +70,6 @@ const Cart = ({ cartItems }) => {
     }));
   
     const checkoutHeader = {
-      cartHeaderId: 0,
       userId: null,
       orderTotal: totalPrice.toFixed(2),
       firstName: firstName,

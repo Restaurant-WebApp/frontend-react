@@ -4,6 +4,7 @@ import authConfig from '../auth_config.json';
 export const fetchData = async () => {
   try {
     const response = await axios.get("http://35.233.78.152/gateway/products");
+    //const response = await axios.get("https://localhost:44379/products");
     if (response.data.isSuccess) {
       return response.data.result;
     } else {
@@ -34,7 +35,6 @@ export const AddItem = async (item) => {
 };
 
 export const DeleteItem = async (itemId) => {
-  console.log("before calling DeleteItem function");
   try {
     const response = await axios.delete(`http://35.233.78.152/gateway/product?id=${itemId}`);
     console.log(response.data);
@@ -54,9 +54,9 @@ export const CheckoutCart = async (CheckoutHeader) => {
   try {
     console.log(CheckoutHeader);
     const response = await axios.post("http://35.233.78.152/gateway/checkout", CheckoutHeader, {
+      //const response = await axios.post("https://localhost:44393/checkout", CheckoutHeader, {
       headers: {
         'Content-Type': 'application/json',
-        //'Access-Control-Allow-Origin': 'http://localhost:3000' 
       }
     });
 
@@ -68,16 +68,16 @@ export const CheckoutCart = async (CheckoutHeader) => {
 
 export const deleteUser = async (email) => {
   const { domain, management_token } = authConfig;
-
   try {
     const userId = await getUserIdFromDetails(email)
     console.log("Inside delete function: ", userId)
-    await axios.delete(`https://${domain}/api/v2/users/${userId}`, {
+    await axios.delete(`https://${domain}/api/v2/users/${userId}`, {  // Deletes user from Auth0
       headers: {
         Authorization: `Bearer ${management_token}`
       }
     });
-    console.log('User deleted successfully.');
+    console.log('User successfully deleted in Auth0.');
+    await deleteUserData(email);    // Deletes User Data from Database
   } catch (error) {
     console.error('Failed to delete user:', error.response.data);
   }
@@ -103,3 +103,15 @@ export const getUserIdFromDetails = async (email) => {
     throw new Error('Failed to retrieve user details');
   }
 };
+
+export const deleteUserData = async (email) =>{
+  console.log(email);
+  try{
+    const response = await axios.delete(`http://35.233.78.152/gateway/DeleteUserData?email=${email}`);
+    if (response.status === 200){
+      console.log('Successfully deleted user data!!')
+    }
+  }catch (err){
+    console.log(err)
+  }
+}
