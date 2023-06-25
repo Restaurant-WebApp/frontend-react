@@ -3,8 +3,8 @@ import authConfig from '../auth_config.json';
 
 export const fetchData = async () => {
   try {
-    const response = await axios.get("http://35.233.78.152/gateway/products");
-    //const response = await axios.get("https://localhost:44379/products");
+    //const response = await axios.get("http://35.233.78.152/gateway/products");
+    const response = await axios.get("https://localhost:44379/products");
     if (response.data.isSuccess) {
       return response.data.result;
     } else {

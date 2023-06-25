@@ -1,0 +1,10 @@
+{
+
+    "productId": 1,
+    "productName": "Pizza",
+    "price": 10,
+    "productDescription": "Pizza is declicious",
+    "productCategory": 0,
+    "productImageUrl": "https://example.com/image1"
+
+}
